@@ -51,7 +51,9 @@ const getMenuItems = (props) => {
       onClick: () => {
         updateLocale(l.locale)
         if (!isAuthorised) {
-          window.location = window.location
+          try {
+            window.location.reload()
+          } catch (error) {}
         }
       },
       leftIcon: <LanguageIcon />,
