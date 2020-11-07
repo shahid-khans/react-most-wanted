@@ -8,7 +8,7 @@ import CameraAlt from '@material-ui/icons/CameraAlt'
 import Send from '@material-ui/icons/Send'
 import { useIntl } from 'react-intl'
 import IconButton from '@material-ui/core/IconButton'
-import * as firebase from 'firebase'
+import firebase from 'firebase/app'
 import { useAuth } from 'base-shell/lib/providers/Auth'
 import { useLists } from 'rmw-shell/lib/providers/Firebase/Lists'
 import { getLocation } from 'rmw-shell/lib/utils/location'
@@ -126,7 +126,7 @@ export default function ({ path }) {
           })}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => {
-            if (e.keyCode === 13) {
+            if (e.keyCode === 13 && value.trim() != '') {
               e.preventDefault()
               sendMessage({ type: 'text', message: value })
             }
